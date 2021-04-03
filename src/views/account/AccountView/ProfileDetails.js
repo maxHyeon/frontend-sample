@@ -37,8 +37,8 @@ const useStyles = makeStyles(() => ({
 const ProfileDetails = ({ className, ...rest }) => {
   const classes = useStyles();
   const [values, setValues] = useState({
-    firstName: 'Katarina',
-    lastName: 'Smith',
+    firstname: 'Katarina',
+    lastname: 'Smith',
     email: 'demo@devias.io',
     phone: '123',
     state: 'Alabama',
@@ -46,8 +46,10 @@ const ProfileDetails = ({ className, ...rest }) => {
   });
   useEffect(() => {
     axios.get('http://localhost:8080/account/55').then((result) => {
+      console.log(result.data)
+
       setValues(result.data)
-    })
+    },[])
     
   })
   const handleChange = (event) => {
@@ -87,7 +89,7 @@ const ProfileDetails = ({ className, ...rest }) => {
                 name="firstName"
                 onChange={handleChange}
                 required
-                value={values.firstName}
+                value={values.firstname}
                 variant="outlined"
               />
             </Grid>
@@ -102,7 +104,7 @@ const ProfileDetails = ({ className, ...rest }) => {
                 name="lastName"
                 onChange={handleChange}
                 required
-                value={values.lastName}
+                value={values.lastname}
                 variant="outlined"
               />
             </Grid>
